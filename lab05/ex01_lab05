@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int dobro(int num){
+    return num * 2;
+}
+
+int main(){
+    int a;
+
+    printf("insira o numero desejado: \n");
+    scanf("%d", &a);
+    printf("o dobro do numero eh: %d \n", dobro(a));
+
+    system("pause");
+    return 0;
+}
