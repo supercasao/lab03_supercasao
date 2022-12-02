@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(){
+	char str[100], str2[100];
+	int contador, contador2;
+	
+	printf("digite a frase desejada: \n");
+	fgets(str, 100, stdin);
+	
+	for(contador = 0, contador2 = 0; str[contador] != '\n'; contador++, contador2++){
+		if(str[contador] == 'r' && str[contador+1] == ' '){
+			str2[contador2] = 'r';
+		}
+		else if(str[contador] == 'r' && str[contador +1] == 'r'){	
+			str2[contador2]= 'l';
+			contador++;
+		}  	
+		
+		else if(str[contador] == 'r' ||str[contador] == 'R'){
+			str2[contador2] = 'l';
+		}
+		else
+			str2[contador2] = str[contador];
+	}
+	
+	str2[contador2] = '\0';
+	printf("frase do cebolinha: %s \n", str2);
+	
+	system ("pause");
+	return 0;
+}
