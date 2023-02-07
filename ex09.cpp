@@ -2,44 +2,16 @@
 #include <stdlib.h>
 
 int main(){
-	
-  	struct carros {
-    	char marca[15], modelo[15];
-    	int ano;
-    	float preco;
-  	};
+    float mat[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+  	float *ptr = mat;
   	
-  	struct carros c[5];
-
-  	float opt;
-
-  	for (int i = 0; i < 5; i++){
-	    printf("insira a marca do %do carro: ", i + 1);
-	    setbuf(stdin, NULL);
-	    gets(c[i].marca);
-	    
-	    printf("insira o modelo do %do carro: ", i + 1);
-	    setbuf(stdin, NULL);
-	    gets(c[i].modelo);
-	    
-	    printf("insira o ano do %do carro: ", i + 1);
-	    scanf("%d", &c[i].ano);
-	    
-	    printf("insira o preco do %do carro: ", i + 1);
-	    scanf("%f", &c[i].preco);
-  	}
-
-  	do{
-    	printf("Procurar carros com valor abaixo de: ");
-    	scanf("%f", &opt);
-    	
-    	for (int i = 0; i < 5; i++){
-      		if(c[i].preco < opt){
-       			 printf("Marca: %s\nModelo: %s\nAno: %d\nPreco: R$%.2f\n\n", c[i].marca, c[i].modelo, c[i].ano, c[i].preco);
-      		}
+  	for (int i = 0; i < 3; i++){
+    	for (int j = 0; j < 3; j++){
+      		printf("Posicao [%d][%d]: %f\n", i, j, *ptr);
+      		*ptr++;
     	}
-  	} while (opt != 0);
-  
-  	system("pause");
+  	}
+    
+	system("pause");
     return 0;
 }

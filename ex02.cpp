@@ -2,30 +2,20 @@
 #include <stdlib.h>
 
 int main(){
+	int n1, n2, *pontn1, *pontn2;
 	
-	struct individuo{
-		char nome[50], endereco[100];
-		int idade;
-	};
-	
-	struct individuo userx;
-	
-	printf("insira o nome: ");
-	setbuf(stdin, NULL);
-	gets(userx.nome);
-	setbuf(stdin, NULL);
-	  
-	printf("insira a idade: ");
-	scanf("%d", &userx.idade);
-	  
-	printf("insira o endereco: ");
-	setbuf(stdin, NULL);
-	gets(userx.endereco);
-	
-	printf("O nome: %s, idade: %d anos e endereço: %s.", userx.nome, userx.idade, userx.endereco);
-	  
-	system("pause");
+    pontn1 = &n1;
+    pontn1 = &n2;
+
+    *pontn1 = 10;
+    *pontn1 = 20;
+
+    if (n1 > n2){
+        printf("O maior valor eh: n1 = %d\nO menor valor eh: n2 = %d", n1, n2);
+    }else{
+        printf("O maior valor eh: n2 = %d\nO menor valor eh: n1 = %d", n2, n1);
+    }
+    
+    system("pause");
     return 0;
 }
-
-

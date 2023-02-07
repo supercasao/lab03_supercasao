@@ -1,27 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct data {
-  	int dia, mes, ano;
-};
+void calculaEsfera(float r, float *a, float *v){
+  	*a = 4 * 3.1415 * (r * r);
+  	*v = 4.0/3.0 * 3.1415 * (r * r * r);
+}
 
-int main{
-	struct data dma[2];
-	int totA, totB, dif;
-	
-	for (int i = 0; i < 2; i++){
-	    printf("insira a %da data (dd/mm/aa): ", i+1);
-	    scanf("%d/%d/%d", &dma[i].dia, &dma[i].mes, &dma[i].ano);
-	}
-	
-	totA = dma[0].dia + (dma[0].mes * 30) + (dma[0].ano * 365);
-	totB = dma[1].dia + (dma[1].mes * 30) + (dma[1].ano * 365);
-	  
-	dif = totA - totB;
-	if(dif < 0) dif *= -1;
-	
-	printf("A diferenca foi: %d dias", dif);
-	
-	system("pause");
+int main(){
+    float r, a, v;
+
+  	printf("Digite o raio da esfera: ");
+  	scanf("%f", &r);
+
+  	calculaEsfera(r, &a, &v);
+  	
+  	printf("Sobra a Esfera:\nArea de superficie: %f\nVolume: %f\n", a, v);
+  	
+  	system("pause");
     return 0;
 }

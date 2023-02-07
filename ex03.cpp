@@ -2,31 +2,24 @@
 #include <stdlib.h>
 
 int main(){
-	
-	struct estudante{
-    	char nome[50], curso[100], matricula[20];
-  	};
+    int n1, n2, *pontn1, *pontn2;
+    
+    pontn1 = &n1;
+    pontn2 = &n2;
 
-  	struct estudante user[5];
+    printf("Digite o primeiro valor: ");
+    scanf("%d", pontn1);
+    
+    printf("Digite o segundo valor: ");
+    scanf("%d", pontn2);
 
-  	for (int i = 0; i < 5; i++){
-    	printf("insira o nome do %do estudante: ", i + 1);
-    	setbuf(stdin, NULL);
-    	gets(user[i].nome);
-    	
-    	printf("insira e o curso do %do estudante: ", i + 1);
-    	setbuf(stdin, NULL);
-    	gets(user[i].curso);
-    	
-    	printf("insira a matricula do %do estudante: ", i + 1);
-    	setbuf(stdin, NULL);
-    	gets(user[i].matricula);
-  	}
-
-  	for (int i = 0; i < 5; i++){
-    	printf("% do estudante\n Nome: %s\n Curso: %s\n Matricula: %s\n\n", i+1, user[i].nome, user[i].curso, user[i].matricula);
-  	}
-  
-  	system("pause");
+    if (n1 > n2){
+        printf("O maior valor eh: %d\nO menor valor eh: %d", n1, n2);
+    }
+    else{
+        printf("O maior valor eh: %d\nO menor valor eh: %d", n2, n1);
+    }
+    
+	system("pause");
     return 0;
 }

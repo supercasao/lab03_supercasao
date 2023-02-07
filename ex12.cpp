@@ -1,47 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int ordenavetores(int *a, int *b, int *c){
+  	int *vet[3] = {a, b, c}, valor;
+  	int cont = 0;
+
+  	for (int i = 0; i < 3; ++i){
+    	for (int j = i + 1; j < 3; ++j){
+      		if (*vet[i] > *vet[j]){
+		        valor = *vet[i];
+		        *vet[i] = *vet[j];
+		        *vet[j] = valor;
+      		}if (*vet[i] == *vet[j])
+        		cont++;
+    	}
+  	}
+  return cont;
+}
+
 int main(){
-    struct eletrodomestico {
-        char nome[15];
-        float potencia, tempo;
-    };
+    int a, b, c, check;
 
-    struct eletrodomestico eletro[5];
+  	printf("Digite o numero A: ");
+  	scanf("%d", &a);
+  	
+  	printf("Digite o numero B: ");
+  	scanf("%d", &b);
+  	
+ 	printf("Digite o numero C: ");
+  	scanf("%d", &c);
+
+  	check = ordenavetores(&a, &b, &c);
+
+  	if (verif == 0){
+    	printf("Nao existem numeros repetidos");
+  	}else if (verif == 3){
+    	printf("Todos os numeros sao iguais");
+  	}
+
+  	printf("\nValores ordenados: %d, %d, %d", a, b, c);
     
-    int dias;
-    
-    float cTot = 0, cRel[5];
-
-    for (int i = 0; i < 5; i++){
-        printf("insira o nome do eletrodomestico: ");
-        setbuf(stdin, NULL);
-        gets(eletro[i].nome);
-        
-        printf("insira a potencia do eletrodomestico em W: ");
-        scanf("%f", &eletro[i].potencia);
-        
-        printf("insira o tempo de uso diario do eletrodomestico em horas: ");
-        scanf("%f", &eletro[i].tempo);
-    }
-
-    printf("Digite quantos dias voce quer calcular: ");
-    scanf("%d", &dias);
-    
-    for(int i = 0; i < 5; i++){
-        cTot += (eletro[i].potencia * eletro[i].tempo);
-    }
-
-    cTot *= dias;
-
-    printf("O consumo total dos eletrodomesticos em %d dias foi: %.2fW\n\n", dias, cTot);
-
-    for (int i = 0; i < 5; i++){
-        cRel[i] = (((eletro[i].potencia * eletro[i].tempo) * 100) * dias)/ cTot;
-        printf("%s corresponde a %.2f%% do consumo total de eletrodomesticos.\n", eletro[i].nome, cRel[i]);
-    }
-
 	system("pause");
     return 0;
 }
-

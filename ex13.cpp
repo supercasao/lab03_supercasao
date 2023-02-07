@@ -1,63 +1,57 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(){
-    struct produtos {
-        char nome[15];
-        int codigo, quantidade;
-        float preco;
-    };
+void verificaString(char *str1, int strLen1, char *str2, int strLen2)
+{
+  int verif = 0, l, k = 0;
+  char *p = str1;
+  char *q = str2;
 
-    struct produtos prod[5];
+  	for (int i = 0; i < strLen1; i++){
+    	if (verif == 1)
+    		break;
+
+    	l = 0;
+    	q = str2;
     
-    int cod, qnt, prodEnc = 0;
-    
-    for(int i = 0; i < 2; i++){
-        printf("insira o nome %do do produto: ", i+1);
-        setbuf(stdin, NULL);
-        gets(prod[i].nome);
+    	for(int j = i; j < strLen1; j++){
+			if (l >= strLen2)
+        		break;
+
+        	if (*p == *q){
+          	k++;  
+        	}
         
-        printf("insira o preco do produto: ");
-        scanf("%f", &prod[i].preco);
-        
-        printf("insira o codigo do produto: ");
-        scanf("%d", &prod[i].codigo);
-        
-        printf("insira a quantidade do produto: ");
-        scanf("%d", &prod[i].quantidade);
+        	q++;
+        	l++;
+
+        	if (k == strLen2){
+          		verif = 1;
+          		break;
+        	}
+    	}
+   		p++;
     }
 
-    do{
-        printf("\n========= FACA SEU PEDIDO =========\n");
-        
-        printf("insira o codigo do produto: ");
-        scanf("%d", &cod);
-        
-        printf("insira a quantidade de produtos: ");
-        scanf("%d", &qnt);
-        
-        prodEnc = 0;
-        
-        for (int i = 0; i < 2; i++){
-            if(cod == prod[i].codigo){
-                if(qnt <= prod[i].quantidade){
-                    printf("Pedido realizado com sucesso! Sera enviado %d %s.\n", qnt, prod[i].nome);
-                    prod[i].quantidade -= qnt;
-                    
-                    printf("Status do produto atualizado:\nNome: %s\nQuantidade:%d\n", prod[i].nome, prod[i].quantidade);
-                    prodEnc++;
-                }
-                prodEnc++;
-            }
-        }
+    if (verif == 1){
+      printf("A segunda frase aparece na primeira!");
+    }else{
+      printf("A segunda frase NAO aparece na primeira.");
+    }
+  
+}
 
-        if(prodEnc == 0){
-            printf("Codigo de produto invalido.");
-        }else if (prodEnc == 1){
-            printf("Quantidade de produto indisponivel.");
-        }   
-    } while (cod != 0);
+int main(){
+    char str1[20], str2[20];
+
+  	printf("Digite a primeira frase: ");
+  	gets(str1);
+  	
+  	printf("Digite a segunda frase: ");
+  	gets(str2);
+
+  	verificaString(&str1, strlen(str1), &str2, strlen(str2));
     
-    system("pause");
+	system("pause");
     return 0;
 }
